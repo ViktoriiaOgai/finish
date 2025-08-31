@@ -20,17 +20,32 @@ module.exports = {
 
   module: {
     rules: [
-      // Транспилируем js с babel
+
+      // Загружаем HTML
+    {
+      test: /\.html$/i,
+      loader: 'html-loader',
+      options: {
+      sources: {
+      list: [
+        { tag: 'img', attribute: 'src', type: 'src' }
+      ]
+    }
+  }
+},
+
+
+         // Транспилируем js с babel
       {
-        test: /\.js$/,
+       test: /\.js$/,
         include: path.resolve(__dirname, 'src/js'),
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
-          }
-        }
+          },
+       },
       },
 
       // Компилируем SCSS в CSS
@@ -60,10 +75,10 @@ module.exports = {
         generator: {
           filename: 'static/[name][ext]'
         }
+  }]
       },
-    ],
-  },
-  plugins: [
+      
+      plugins: [
     // Подключаем файл html, стили и скрипты встроятся автоматически
     new HtmlWebpackPlugin({
       title: 'Webpack 5 Starter',
