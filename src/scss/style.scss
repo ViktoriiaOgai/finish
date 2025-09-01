@@ -112,7 +112,7 @@ body
     }
 
 .text-block__checkbox {
-  display: none; /* скрываем чекбокс */
+  display: none; 
 }
     .text-block__text {
   width: 100%;
@@ -186,7 +186,12 @@ body
   background-color: #fff;
   box-sizing: border-box;
 }
-
+.header__icon-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
 .header__left,
 .header__center,
 .header__right {
@@ -215,6 +220,25 @@ body
   height: 40px;
   object-fit: contain;
   border-radius: 50%;
+}
+.menu-container {
+  position: absolute; /* или fixed */
+  top: 0;
+  left: -300px; /* прячем меню слева от видимой области */
+  width: 300px;
+  height: 100%;
+  background: #fff;
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+
+.menu-container.active {
+  left: 0; /* показываем меню */
+}
+
+/* Основной контент */
+.page-content {
+  margin-left: 0; /* контент не сдвигается */
 }
 }
 
