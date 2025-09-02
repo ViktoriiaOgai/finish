@@ -32,6 +32,7 @@ body
 @media (min-width: 320px) and (max-width: 1439px) 
 {
   // Адаптивная верстка из файла adapt.html
+  .page-content {
   .desck-block__title {
     display: none;
   }
@@ -221,7 +222,7 @@ body
   height: 40px;
   object-fit: contain;
   border-radius: 50%;
-}
+}}
 // Всплывающее меню из файла style.html
 .menu-container {
  position: absolute;
