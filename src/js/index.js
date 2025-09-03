@@ -6,19 +6,9 @@ import brandHTML from '../html/brand.html'
 const app = document.getElementById('app');
 app.innerHTML = adaptHTML + brandHTML //+ styleHTML;
 
-// --- Пример интерактива для бургер-меню ---
-//const burgerBtn = document.querySelector('.header__burger');
-//const menu = document.querySelector('.menu');
-//let menuLoaded = false;
-
-//if (burgerBtn && menu) {
-  //burgerBtn.addEventListener('click', () => {
-//    menu.classList.toggle('menu--open');
-//  });
-//}
 const burgerBtn = document.getElementById('burger-btn');
 const menuContainer = document.getElementById('menu-container');
-const pageContent = document.getElementById('app');
+const content = document.querySelector('.page-content');
 let menuLoaded = false;
 
 burgerBtn.addEventListener('click', () => {
@@ -29,12 +19,30 @@ burgerBtn.addEventListener('click', () => {
         menuContainer.innerHTML = html;
         menuLoaded = true;
         menuContainer.classList.add('active');
-        
+        content.classList.add('hidden');
+
+        // крестик появится после загрузки меню
+        const closeBtn = menuContainer.querySelector('#close-btn');
+        if (closeBtn) {
+          closeBtn.addEventListener('click', () => {
+            menuContainer.classList.remove('active'); // скрыть меню
+            content.classList.remove('hidden');       // вернуть контент
+          });
+        }
       })
       .catch(err => console.error('Ошибка загрузки меню:', err));
   } else {
+    // если меню уже подгружено
     menuContainer.classList.toggle('active');
-    pageContent.classList.toggle('shifted');
+    content.classList.toggle('hidden');
+
+    const closeBtn = menuContainer.querySelector('#close-btn');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        menuContainer.classList.remove('active');
+        content.classList.remove('hidden');
+      });
+    }
   }
 });
 // --- Показать все бренды ---
