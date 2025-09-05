@@ -2,9 +2,8 @@ import '../scss/style.scss'
 
 import adaptHTML from '../html/adapt.html'
 import brandHTML from '../html/brand.html'
-//import styleHTML from '../html/style.html'
 const app = document.getElementById('app');
-app.innerHTML = adaptHTML + brandHTML //+ styleHTML;
+app.innerHTML = adaptHTML + brandHTML;
 
 const burgerBtn = document.getElementById('burger-btn');
 const menuContainer = document.getElementById('menu-container');
@@ -48,7 +47,7 @@ burgerBtn.addEventListener('click', () => {
 // --- Показать все бренды ---
 const toggleBtn = document.querySelector('.brands__toggle');
 const brandsList = document.querySelector('.brands__list');
-
+const brandsContainer = document.querySelector('.brands__list');
 if (toggleBtn && brandsList) {
   toggleBtn.addEventListener('click', () => {
     brandsList.classList.toggle('brands__list--expanded');
