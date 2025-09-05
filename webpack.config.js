@@ -21,6 +21,12 @@ module.exports = {
   module: {
     rules: [
 
+     // **CSS ( Swiper)**
+    {
+      test: /\.css$/i,
+      use: [MiniCssExtractPlugin.loader, 'css-loader'],
+    },
+
       // Загружаем HTML
     {
       test: /\.html$/i,

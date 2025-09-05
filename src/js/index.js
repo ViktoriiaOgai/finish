@@ -1,13 +1,20 @@
+//стили и свайп с пагинацией
 import '../scss/style.scss'
-
+import Swiper from 'swiper/bundle';
+import 'swiper/css';
+import 'swiper/css/pagination';
+// импорт html файлов
 import adaptHTML from '../html/adapt.html'
 import brandHTML from '../html/brand.html'
+
 const app = document.getElementById('app');
+
 app.innerHTML = adaptHTML + brandHTML;
 
 const burgerBtn = document.getElementById('burger-btn');
 const menuContainer = document.getElementById('menu-container');
 const content = document.querySelector('.page-content');
+
 let menuLoaded = false;
 
 burgerBtn.addEventListener('click', () => {
@@ -45,6 +52,7 @@ burgerBtn.addEventListener('click', () => {
   }
 });
 // --- Показать все бренды ---
+
 const toggleBtn = document.querySelector('.brands__toggle');
 const brandsList = document.querySelector('.brands__list');
 const brandsContainer = document.querySelector('.brands__list');
@@ -56,4 +64,29 @@ if (toggleBtn && brandsList) {
       : 'Показать все';
   });
 }
+// --- Инициализация Swiper ---
+// Делаем небольшой таймаут, чтобы HTML уже вставился
+setTimeout(() => {
+ document.addEventListener('DOMContentLoaded', () => {
+  const swiper = new Swiper('.brands__list', {
+    slidesPerView: 1.2,
+    spaceBetween: 12,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+
+  // Показать все бренды
+  const toggleBtn = document.querySelector('.brands__toggle');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      const slides = document.querySelectorAll('.swiper-slide');
+      slides.forEach(slide => slide.style.display = 'flex');
+      toggleBtn.style.display = 'none'; // скрыть кнопку после раскрытия
+      swiper.update(); // обновить Swiper после изменения слайдов
+    });
+  }
+})
+});
 console.log('It works!')
