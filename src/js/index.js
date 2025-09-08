@@ -55,20 +55,20 @@ burgerBtn.addEventListener('click', () => {
 
 const toggleBtn = document.querySelector('.brands__toggle');
 const brandsList = document.querySelector('.brands__list');
-const brandsContainer = document.querySelector('.brands__list');
+const brands = document.querySelector('.brands__list');
+
 if (toggleBtn && brandsList) {
-  toggleBtn.addEventListener('click', () => {
+    toggleBtn.addEventListener('click', () => {
     brandsList.classList.toggle('brands__list--expanded');
     toggleBtn.textContent = brandsList.classList.contains('brands__list--expanded')
       ? 'Свернуть'
       : 'Показать все';
   });
-}
+} 
 // --- Инициализация Swiper ---
 // Делаем небольшой таймаут, чтобы HTML уже вставился
 setTimeout(() => {
- document.addEventListener('DOMContentLoaded', () => {
-  const swiper = new Swiper('.brands__list', {
+  const swiper = new Swiper('.swiper', {
     slidesPerView: 1.2,
     spaceBetween: 12,
     pagination: {
@@ -88,5 +88,4 @@ setTimeout(() => {
     });
   }
 })
-});
 console.log('It works!')
