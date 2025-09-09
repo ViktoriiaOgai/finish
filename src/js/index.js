@@ -69,13 +69,24 @@ if (toggleBtn && brandsList) {
 // Делаем небольшой таймаут, чтобы HTML уже вставился
 setTimeout(() => {
   const swiper = new Swiper('.swiper', {
-    slidesPerView: 1.2,
+    slidesPerView: 'auto',
     spaceBetween: 12,
+    centeredSlides: false,
+    slidesOffsetBefore: 12,   // добавляем отступ слева (чтобы не обрезался)
+  slidesOffsetAfter: 12,    // можно добавить и справа для симметрии
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
+      renderBullet: function (index, className) {
+      return '<span class="' + className + '"></span>';
+    },
     },
   });
+  swiper.pagination.bullets.forEach((bullet, index) => {
+  bullet.addEventListener('click', () => {
+    swiper.slideTo(index); // листаем так, чтобы слайд встал полностью
+  });
+});
 
   // Показать все бренды
   const toggleBtn = document.querySelector('.brands__toggle');
