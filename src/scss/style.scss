@@ -33,19 +33,25 @@ body
   overflow-x: hidden;  
   overflow-y: auto;   
   min-height: 100vh;
-
+}
 //Верстка для экранов расширением от 320px до 1439px
   @media (min-width: 320px) and (max-width: 1439px) 
 {
   // Адаптивная верстка из файла adapt.html
   
-  .desck-block__title {
+  .desck-block__title,
+  .desck__item1,
+  .text-block__text2
+   {
     display: none;
   }
   
-  .desck__item1 {display: none;}
-  
-  .text-block__text2{display: none;}
+  .page__main {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    
+  }
   
   body {
    font-family: 'tt lakes', sans-serif;
@@ -766,7 +772,7 @@ body {
   .text-block__text,
   .text-block__text1,
   .text-block__text2 {display: block;}
-}
+
 .page__main {
   flex-grow: 1;
   display: flex;
