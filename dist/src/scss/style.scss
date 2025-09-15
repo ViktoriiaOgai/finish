@@ -234,20 +234,15 @@ font-weight: 500;
 // Всплывающее меню из файла style.html
 
 .menu-container {
-  display: flex !important;
-   background: #fff;
-  flex-direction: column !important;
-  justify-content: space-between !important; /* футер прижмется вниз */
-  position:fixed !important;
+  position: fixed;
   top: 0;
   left: 0;
   width: 320px;
-  height: 100vh;
+  height: 100%;
   background: #fff;
   transform: translateX(-320px);
   transition: transform 0.3s ease;
   z-index: 1000;
-  overflow-y: auto;   
 }
 .menu-container.active {
 transform: translateX(0);
@@ -266,7 +261,6 @@ transform: translateX(0);
 }
 
 .head {
-  display: flex;
   font-family: 'TTlakes', sans-serif;
   display: flex;
   align-items: flex-start;  
@@ -305,7 +299,6 @@ transform: translateX(0);
 // Содержание страницы между хедером и футером
 .main {
   flex: 1;
-  overflow-y: auto;
 }
 
 .menu__nav {
@@ -317,7 +310,6 @@ transform: translateX(0);
   padding-left: 0;
   align-items: flex-start; 
   padding: 0;
-    overflow-y: auto;   
 }
 .menu__text1 {
   list-style: none;
