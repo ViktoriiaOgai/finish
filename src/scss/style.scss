@@ -35,13 +35,13 @@ body
   min-height: 100vh;
 }
 //Верстка для экранов расширением от 320px до 1439px
-  @media (min-width: 320px) and (max-width: 1439px) 
-{
   // Адаптивная верстка из файла adapt.html
   
   .desck-block__title,
   .desck__item1,
-  .text-block__text2
+  .text-block__text2,
+  .price-desc,
+  .foot-inf1 
    {
     display: none;
   }
@@ -419,17 +419,24 @@ transform: translateX(0);
 
  // вставка из файла брендов
 
- .brands__toggle {
+ .brands__toggle,
+ .brands-as__toggle {
   display:none;
 }
-  .brands{
-
+  .brands {
   position: relative;
   width: 100%;
   margin: 0 auto;
   margin-top: 20px;
 }
-.brands-as, .price {
+.brands-as {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.price {
   position: relative;
   width: 100%;
   height: 250px;
@@ -499,7 +506,7 @@ transform: translateX(0);
   color: #fff;
 }
 
-.brand-card-as button {
+.brand-as-card button {
   width: 32px;
   height: 32px;
   border: 1px solid #ff004d;
@@ -517,7 +524,7 @@ transform: translateX(0);
   cursor: pointer;
 }
 
-.brand-card-as button:hover {
+.brand-as-card button:hover {
   background: #ff3366;
   color: #fff;
 }
@@ -534,7 +541,7 @@ transform: translateX(0);
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #790606;
+  background: #9c9a9a;
   display: inline-block;
   margin: 0 4px;
 }
@@ -543,48 +550,49 @@ transform: translateX(0);
   background: #666565;
 }
 .brand-card {
-  width: 250;      /* фиксированная одинаковая ширина */
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  width: 250px;      /* фиксированная одинаковая ширина */
+  height: 72px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
   padding: 3px 3px;
   background: #fff;
   border-radius: 12px;
   border: 1px solid #ddd;
   box-sizing: border-box;
-    flex-shrink: 0; 
+  flex-shrink: 0; 
 }
 
-.brand-card-as {
-  flex: 0 0 240px;      /* фиксированная одинаковая ширина */
-  height: 250px;
-  display: flex;
-  align-items: flex-start;
+.brand-as-card {
+  width: 250px;     /* фиксированная одинаковая ширина */
+  height: 100px !important;
+  display: flex !important;
+  align-items: flex-start !important;
   flex-direction:column;
-  justify-content: space-between;
+  justify-content: space-between !important;
   padding: 8px 8px;
   background: #fff;
   border-radius: 12px;
   border: 1px solid #ddd;
   box-sizing: border-box;
+  flex-shrink: 0; 
  }
 
  .price-card__list {
   padding-left: 20px;
   width: 100%;
-  height: 250px; /* достаточная высота для слайдов + пагинации */
+  height: 150px; /* достаточная высота для слайдов + пагинации */
   box-sizing: border-box;
-  position: relative;
+  position: relative !important;
   padding-bottom: 50px;
 }
   .price-card {
   flex: 0 0 240px;      /* фиксированная одинаковая ширина */
   height: 150px;
-  display: flex;
-  align-items: flex-start;
-  flex-direction:column;
-  justify-content: space-between;
+  display: flex !important;
+  align-items: flex-start !important;
+  flex-direction:column ;
+  justify-content: space-between !important;
   padding: 8px 8px;
   background: #fff;
   border-radius: 12px;
@@ -702,11 +710,198 @@ transform: translateX(0);
   margin-top: 16px;
   padding: 0 20px;
 }
-}
+//}
 
 
 /* === Адаптация для десктопов от 1440px  */
 @media (min-width: 1440px) {
+
+  body 
+{ 
+  padding: 0;
+  margin: 0;
+  font-family: 'TT Lakes', sans-serif;
+  background-color: #F8F8F8;
+  color: #1b1c21;
+  overflow-x: hidden;  
+  overflow-y: auto;   
+  min-height: 100vh;
+}
+
+  //боковое меню из файла style.html
+  .menu-container {
+  display: flex;
+  flex: 0 0 320px;
+  width: 320px;
+  height: 100%;
+  background: #fff;
+  transform: none;
+  transition: none;
+  z-index: 1000;
+}
+.header__icon-btn {
+    display: none;
+  }
+
+.page-content {
+   margin-left: 320px;
+    flex: 1;          /* всё оставшееся место */
+    }
+
+.head {
+  font-family: 'TTlakes', sans-serif;
+  display: flex;
+  align-items: flex-start;  
+  justify-content: space-between;
+  width: 100%;
+  height: 80px;
+  background: #fff;
+  position: relative;
+  flex-direction: row;
+  top: 0;
+  left: 0;
+  padding: 0;
+}
+
+.icon__right {
+   gap: 12px;
+  padding-right: 5px;
+   width: 40px; 
+   height: 40px; 
+   margin-top: 10px;
+  }
+  .logo {
+    width: 96.55px;
+    height: 50.81;
+    top: 18.73px;
+    left: 83.73px;
+    border: 0.5px;
+    margin-top: 10px;
+    padding-left: 20px;
+}
+// Содержание страницы между хедером и футером
+.main {
+  flex: 1;
+}
+
+.menu__nav {
+  overflow-y: auto; /* если будет длинное меню */
+  display: flex;
+  align-items:flex-start;
+  flex-direction: column;
+  gap: 15px;
+  padding-left: 0;
+  align-items: flex-start; 
+  padding: 0;
+}
+.menu__text1 {
+  list-style: none;
+  margin: 0;
+  margin-bottom: 12px;
+   margin-top: 18px;
+   height: 24px;
+   top: 80px;
+   color: #020202;
+   padding: 20px;
+   flex: 0 0 auto;
+   padding: 5px 16px;
+   border-radius: 5px;
+   border: 1px solid transparent;
+   background-color: #ffff;
+   font-size: 16px;
+   white-space: nowrap;
+   cursor: pointer;
+   transition: 0.3s;
+}
+.menu__text1:hover {
+  background-color:  #b4b3b3;
+  color: #504e4e; 
+  border: 0.5px solid #393a3a;
+  font-weight: 100;
+  border-left: 4px solid #41f6d7;
+}
+// Все содержимое страницы растягиваем 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.foot {
+  padding: 0;
+  display: flex;
+  align-items:flex-start;  
+  justify-content:space-between;
+  flex-direction:column;
+  background: #fff;
+  gap: 5px;
+  margin-top: auto; /* футер прижимается вниз */
+ }
+.foot__foot {
+  display: flex;
+  margin-top: 30px;
+  align-items: flex-start;  
+  justify-content:space-between;
+  flex-direction:row;
+  background: #fff;
+  gap: 20px;
+  padding: 0 20px;
+}
+.icon__foot {
+   width: 35px; 
+   height: 35px;  
+     }
+.foot__mail {
+  font-size: 16px; 
+  color: black;
+  padding: 0 20px;
+ }   
+.foot__tel {
+  font-size: 25px; 
+  font-weight: bolder;
+  color: black;
+  padding: 0 20px;
+}       
+.foot__lang {
+  margin-top: 0; 
+  padding: 0 20px;
+}
+.contact {
+  display: flex;
+  justify-content: flex-start; 
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.contact__text {
+   color: #020202;
+   padding: 2px 5px;
+   flex: 0 0 auto;
+   border-radius: 5px;
+   border: 1px solid transparent;
+   background-color: #ffff;
+   font-size: 14px;
+   white-space: nowrap;
+   cursor: pointer;
+   transition: 0.3s;
+}
+.contact__text:hover {
+  background-color:  #b4b3b3;
+  color: #000; 
+  border: 0.5px solid #393a3a;
+  font-weight: 100;
+  border-left: 4px solid #41f6d7;
+}
+.contact__text--active--true {
+  background-color: #fff;
+  border:none;
+  font-weight: 100;
+  color: #636060;
+}
+
+
+//основная страница
 
   .menu__list {
   display: flex;
@@ -746,17 +941,13 @@ transform: translateX(0);
   .header {display: none;}
   .text-block__title{display: none;}
   
-.desck-block {
-      background:#F8F8F8;
-      flex: 1 1 50%;
-     }
-      .desck-block__title {
-      display: flex;
-      justify-content: space-between;
-      font-size: 24px;
-      margin: 35px 0 16px;
-    }
-    .icon-block {
+  .desck-block__title {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    margin: 35px 0 16px;
+   }
+  .icon-block {
   display: flex;
   align-items: center; 
   margin-right: 12px; 
@@ -764,14 +955,15 @@ transform: translateX(0);
 }
 
 .icon-block__label {
-  margin-right: 12px; 
-  margin-left: 12px; 
-  font-size: 12px;
-  color: #1b1c21;
+ margin-right: 12px; 
+ margin-left: 12px; 
+ font-size: 12px;
+ color: #1b1c21;
 }
 
-  .text-block__text {
-    display: flex;}
+.text-block__text {
+  display: flex;
+}
 
 .page__main {
   flex-grow: 1;
@@ -806,8 +998,8 @@ transform: translateX(0);
 }
 
  .text-block {
-      background:#F8F8F8;
-      padding: 16px 16px;
+    background:#F8F8F8;
+    padding: 16px 16px;
  }
  .text-block__title {
       font-size: 24px;
@@ -872,6 +1064,160 @@ transform: translateX(0);
   height: 30px;
   object-fit: contain;
 }
+.swiper-pagination,
+.price {
+  display: none;
+}
+ .brands__toggle {
+  display:flex;
+}
+.text-block__link1 {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #7e7e82;    
+  text-decoration: none;
+  background: none;
+  border: none;
+  margin-top: 16px;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.text-block__link1:hover {
+  color: #000;
+}
+.price-desc .swiper {
+    padding-bottom: 5px;
+     }
+  .swiper-pagination {
+    display: none;
+  }
 
+    /* 3 колонки */
+  .price-desc {
+    display: flex;
+    flex-direction: column;
+    width: 95%;           /* таблица занимает всю ширину контейнера */
+  max-width: 1350px;     /* можно ограничить, если надо */
+  margin: 0 auto;        /* центрирование */
+  padding: 0 20px;       /* отступы слева и справа */
+  grid-template-columns: 2fr 1fr 1fr auto; /* пример колонок: услуга | цена | время | кнопка */
+  gap: 16px;             /* расстояние между колонками */
+  background-color: #fff;;
+  box-sizing: border-box; /* учитывает padding в ширине */
+  }
+
+  .price-desc__btn {
+  justify-self:flex-end;
+  display: inline-flex;          /* для центрирования текста */
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;  /* прижимаем к правому краю */
+  margin-top: 0;      /* отступ сверху */
+  padding: 3px 10px;       /* по бокам */
+  min-height: 25px;  
+  border: 1px solid #ff004d;
+  border-radius: 9999px;
+  background: none;
+  color: #ff004d;
+  line-height: 1;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.price-desc__btn:hover {
+  background: #ff3366;
+  color: #fff;
+}
+  /* — принудительно сбросим, если swiper добавляет inline-flex/width к .swiper-slide  */
+  .price .swiper-slide {
+    flex: none !important;
+  }
+  .price-desc__row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto; /* колонки: услуга | цена | время | кнопка */
+  align-items: center;        /* выравнивание по вертикали */
+  padding: 12px 0;            /* отступ сверху/снизу каждой строки */
+  border-bottom: 2px solid #F8F8F8; /* разделитель строк */
+    gap: 24px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px 20px;
+    border-radius: 5px;       
+    background: #fff;
 
 }
+
+.price-desc__col {
+  white-space: nowrap;        /* текст в одну строку */
+  overflow: hidden;
+  text-overflow: ellipsis;    /* "..." если не помещается */
+  font-size: 14px;
+  color: #050505;
+}
+
+.price__head {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 24px;
+    padding: 16px 20px;
+    font-weight: 700;
+    color: #757575;
+    border-bottom: 2px solid  #F8F8F8;
+    margin-bottom: 8px;
+  }
+
+  /* Колонки — выравнивание/падинги */
+  .price__col { padding: 0; }
+  .price__col--service { text-align: left; }
+  .price__col--price,
+  .price__col--time { text-align: left; white-space: nowrap; }
+
+  /* Если у тебя в последней колонке кнопка — правим её */
+  .price__col--time .price__btn,
+  .price__col--price .price__btn {
+    justify-self: end; /* кнопки справа в ячейке */
+  }
+  .info__text {
+    text-align: left;       /* выравнивание текста по левому краю */
+  white-space: normal;    /*  перенос строк */
+  word-wrap: break-word;  /* перенос длинных слов, если нужно */
+  width: 50%;            /* чтобы занимал всю ширину контейнера */
+  }
+  .footer {
+  display: flex;
+  justify-content: space-around; /* распределяем блоки по горизонтали */
+  align-items: center;
+  padding: 20px;
+  flex-wrap: wrap; /* для адаптивности */
+  width: 100%;
+  box-sizing: border-box;
+}
+.foot-inf {display: none;}
+.foot-inf1 {
+  font-family: 'TTlakes', sans-serif;
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 300;
+  color: #b5b5bb;    
+  margin-top: 16px;
+  padding: 0 20px;
+}
+.f-left {
+  text-align: left;   /* текст прижат к левому краю */
+}
+
+.f-center {
+  text-align: center; /* текст по центру */
+  flex: 1;            /* центрируем блок относительно остальных */
+}
+
+.f-right {
+  text-align: right;  /* текст прижат к правому краю */
+}
+  }

@@ -51,6 +51,8 @@ burgerBtn.addEventListener('click', () => {
     }
   }
 });
+
+
 // --- Показать все бренды ---
 
 const toggleBtn = document.querySelector('.brands__toggle');
@@ -99,4 +101,24 @@ setTimeout(() => {
     });
   }
 })
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (window.innerWidth >= 1440) {
+    fetch('../html/style.html')
+      .then(res => res.text())
+      .then(html => {
+        document.querySelector('.menu-container').innerHTML = html;
+      });
+  }
+});
+
+// для десктопа – сразу при загрузке
+document.addEventListener("DOMContentLoaded", async () => {
+  if (window.innerWidth >= 1440) {
+    if (!menuLoaded) {
+      await loadMenu();
+    }
+    menuContainer.classList.add('active'); // на всякий случай
+  }
+});
 console.log('It works!')
