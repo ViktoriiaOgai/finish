@@ -739,7 +739,7 @@ transform: translateX(0);
   overflow-y: auto;   
   min-height: 100vh;
 }
-
+.swiper-pagination {display: none;}
   //боковое меню из файла style.html
   .menu-container {
   display: flex;
@@ -1083,6 +1083,136 @@ transform: translateX(0);
  .brands__toggle {
   display:flex;
 }
+
+
+  .brands {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: block;
+}
+.swiper-wrapper {
+    display: contents !important; /* отключаем слайдер, используем только сетку */
+    transform: none;
+  }
+.swiper-slide {
+  display: flex !important;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 1440px; /* фиксированная ширина для 1440px */
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  }
+.brands__list {
+  margin-top: 20px;
+  padding: 0 5px;
+  padding-right: 20px;
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr); /* 4 в ряд */
+  grid-template-rows: repeat(3, auto);   /* 3 ряда */
+  gap: 15px;
+}
+.brands__title {
+  margin-top: 20px;
+  padding: 0 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #7a7a7a;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.brand-card button { 
+  width: 30px;
+  height: 30px;
+  min-width: 30px;   
+  min-height: 30px;  
+  margin-left: 8px;
+  display: flex;     
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  line-height: 1;
+  border: 1px solid #ff004d;
+  border-radius: 50%;
+  background: none;
+  color: #ff004d;
+  cursor: pointer;
+  box-sizing: border-box; /* чтобы border не менял размер */
+  }
+  
+.brand-card button:hover { 
+  background: #ff3366; 
+  color: #fff; 
+}
+
+.brand-card {
+  display: flex !important;
+  align-items:center;
+  justify-content:space-between;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fff;
+  width: auto;         
+  height: 72px;
+  box-sizing: border-box;
+}
+.brand-card img {
+  padding: 0;
+  max-height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+.brands__list .brand-card:nth-child(n+5) {
+    display: none !important; /*скрывает лишние элементы*/
+  }
+.brands__list.brands__list--expanded .brand-card {
+  display: flex !important;
+}
+
+  //.brands__list .brand-card.show {
+  //display: flex !important;
+  
+//}
+
+/* Кнопка и стрелка */
+.brands__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1b1c21;
+  background: none;
+  border: none;
+  margin-top: 16px;
+  padding: 0;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.button__icon {
+  width: 30px;
+  height: 30px;
+  fill: #41f6d7;
+  transition: transform 0.3s ease, fill 0.3s ease;
+}
+.brands__toggle.open .button__icon {
+  transform: rotate(180deg);
+    }
+  .brands__toggle:hover {
+  display: inline-flex;
+}
+
+
+
+
+
+
+
+
 .text-block__link1 {
   display: inline-flex;
   align-items: flex-start;
@@ -1232,4 +1362,4 @@ transform: translateX(0);
 .f-right {
   text-align: right;  /* текст прижат к правому краю */
 }
-  }
+}

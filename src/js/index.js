@@ -66,11 +66,13 @@ let menuLoaded = false;
 const toggleBtn = document.querySelector('.brands__toggle');
 const brandsList = document.querySelector('.brands__list');
 const brands = document.querySelector('.brands__list');
-
+const buttonText = toggleBtn.querySelector('.text-block__link1');
 if (toggleBtn && brandsList) {
     toggleBtn.addEventListener('click', () => {
-    brandsList.classList.toggle('brands__list--expanded');
-    toggleBtn.textContent = brandsList.classList.contains('brands__list--expanded')
+      brandsList.classList.toggle('brands__list--expanded');
+   // brandsList.classList.toggle('brands__list--expanded');
+      toggleBtn.classList.toggle('open'); // для поворота стрелки
+      buttonText.textContent = brandsList.classList.contains('brands__list--expanded')
       ? 'Свернуть'
       : 'Показать все';
   });
