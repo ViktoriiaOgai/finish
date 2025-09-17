@@ -22,7 +22,8 @@ $text: #050505;
   box-sizing: border-box;
   }
 
-.menu-container { display: none; }
+.menu-container
+{ display: none !important; }
 body 
 { 
   padding: 0;
@@ -41,7 +42,10 @@ body
   .desck__item1,
   .text-block__text2,
   .price-desc,
-  .foot-inf1 
+  .foot-inf1,
+  .brands__toggle,
+.brands-as__toggle,
+.text-block__link1
    {
     display: none;
   }
