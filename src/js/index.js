@@ -16,7 +16,6 @@ const burgerBtn = document.getElementById('burger-btn');
 const menuContainer = document.getElementById('menu-container');
 const content = document.querySelector('.page-content');
 menuContainer.innerHTML = styleHTML;
-//const closeBtn = document.getElementById('close-btn');
 
 let menuLoaded = false;
 
