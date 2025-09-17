@@ -6,41 +6,50 @@ import 'swiper/css/pagination';
 // импорт html файлов
 import adaptHTML from '../html/adapt.html'
 import brandHTML from '../html/brand.html'
+import styleHTML from '../html/style.html'
 
 const app = document.getElementById('app');
 
-app.innerHTML = adaptHTML + brandHTML;
+app.innerHTML = adaptHTML + brandHTML ;//+ styleHTML;
 
 const burgerBtn = document.getElementById('burger-btn');
 const menuContainer = document.getElementById('menu-container');
 const content = document.querySelector('.page-content');
+menuContainer.innerHTML = styleHTML;
+//const closeBtn = document.getElementById('close-btn');
 
 let menuLoaded = false;
 
-burgerBtn.addEventListener('click', () => {
-  if (!menuLoaded) {
-    fetch('../html/style.html') // путь к файлу меню
-      .then(response => response.text())
-      .then(html => {
-        menuContainer.innerHTML = html;
-        menuLoaded = true;
-        menuContainer.classList.add('active');
-        content.classList.add('hidden');
+//burgerBtn.addEventListener('click', () => {
+ // if (!menuLoaded) {
+    //fetch('../html/style.html') // путь к файлу меню
+     // .then(response => response.text())
+     // .then(html => {
+      //  menuContainer.innerHTML = html;
+     //   menuLoaded = true;
+     //   menuContainer.classList.add('active');
+     //   content.classList.add('hidden');
 
         // крестик появится после загрузки меню
-        const closeBtn = menuContainer.querySelector('#close-btn');
-        if (closeBtn) {
-          closeBtn.addEventListener('click', () => {
-            menuContainer.classList.remove('active'); // скрыть меню
-            content.classList.remove('hidden');       // вернуть контент
-          });
-        }
-      })
-      .catch(err => console.error('Ошибка загрузки меню:', err));
-  } else {
+      //  const closeBtn = menuContainer.querySelector('#close-btn');
+      //  if (closeBtn) {
+       //   closeBtn.addEventListener('click', () => {
+       //     menuContainer.classList.remove('active'); // скрыть меню
+        //    content.classList.remove('hidden');       // вернуть контент
+       //   });
+       // }
+      //})
+     // .catch(err => console.error('Ошибка загрузки меню:', err));
+ // } else {
     // если меню уже подгружено
-    menuContainer.classList.toggle('active');
-    content.classList.toggle('hidden');
+    //menuContainer.classList.toggle('active');
+    //content.classList.toggle('hidden');
+
+
+    burgerBtn.addEventListener('click', () => {
+  menuContainer.classList.add('active'); // показать меню
+  content.classList.add('hidden');       // скрыть контент
+});
 
     const closeBtn = menuContainer.querySelector('#close-btn');
     if (closeBtn) {
@@ -49,8 +58,8 @@ burgerBtn.addEventListener('click', () => {
         content.classList.remove('hidden');
       });
     }
-  }
-});
+  
+
 
 
 // --- Показать все бренды ---
@@ -102,23 +111,21 @@ setTimeout(() => {
   }
 })
 
-document.addEventListener("DOMContentLoaded", () => {
-  if (window.innerWidth >= 1440) {
-    fetch('../html/style.html')
-      .then(res => res.text())
-      .then(html => {
-        document.querySelector('.menu-container').innerHTML = html;
-      });
-  }
-});
+//document.addEventListener("DOMContentLoaded", () => {
+  //if (window.innerWidth >= 1440) {
+    //fetch('../html/style.html')
+      //.then(res => res.text())
+      //.then(html => {
+      //  document.querySelector('.menu-container').innerHTML = html;
+     // });
+ // }
+//});
 
 // для десктопа – сразу при загрузке
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
   if (window.innerWidth >= 1440) {
-    if (!menuLoaded) {
-      await loadMenu();
-    }
-    menuContainer.classList.add('active'); // на всякий случай
+    menuContainer.classList.add('active'); // сразу показываем меню
+    content.classList.remove('hidden');    // контент не скрываем
   }
 });
 console.log('It works!')
