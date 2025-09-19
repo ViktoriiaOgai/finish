@@ -34,6 +34,28 @@ let menuLoaded = false;
     }
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.text-block').forEach(block => {
+    const link = block.querySelector('.text-block__link');
+    const linkText = link.querySelector('.text-block__link-text');
+    const content = block.querySelector('.text-block__text');
+    const icon = link.querySelector('.button__icon');
+
+    if (!link || !linkText || !content || !icon) return;
+
+    link.addEventListener('click', () => {
+      link.classList.toggle('open');
+
+      if (link.classList.contains('open')) {
+        linkText.textContent = 'Свернуть';
+        content.style.maxHeight = content.scrollHeight + 'px';
+      } else {
+        linkText.textContent = 'Читать далее';
+        content.style.maxHeight = '60px';
+      }
+    });
+  });
+});
 
 // --- Инициализация Swiper для мобильных---
 // Делаем небольшой таймаут, чтобы HTML уже вставился
@@ -80,29 +102,20 @@ if (toggleBtn && brandsList) {
   
 // --- Показать все  Ремонт различных видов техники---
 
-const toggleBtn1 = document.querySelector('.brands-sa__toggle');
+const toggleBtn1 = document.querySelector('.brands-as__toggle');
 const brandsList1 = document.querySelector('.brands-as__list');
 const brandsas = document.querySelector('.brands-as__list');
-//const buttonText = toggleBtn.querySelector('.text-block__link1');
+const buttonText1 = toggleBtn1.querySelector('.text-block__link2');
 if (toggleBtn1 && brandsList1) {
-    toggleBtn.addEventListener('click', () => {
+    toggleBtn1.addEventListener('click', () => {
       brandsList1.classList.toggle('brands-as__list--expanded');
       toggleBtn1.classList.toggle('open'); // для поворота стрелки
-      buttonText.textContent = brandsList1.classList.contains('brands__list--expanded')
+      buttonText1.textContent = brandsList1.classList.contains('brands-as__list--expanded')
       ? 'Свернуть'
       : 'Показать все';
   });
 } 
 
-//const toggleBtn1 = document.querySelector('.brands-as__toggle');
-  if (toggleBtn1) {
-    toggleBtn1.addEventListener('click', () => {
-      const slides = document.querySelectorAll('.swiper-slide');
-      slides.forEach(slide => slide.style.display = 'flex');
-      toggleBtn1.style.display = 'none'; // скрыть кнопку после раскрытия
-      swiper.update(); // обновить Swiper после изменения слайдов
-    });
-  }
 
 // для десктопа – сразу при загрузке
 document.addEventListener("DOMContentLoaded", () => {

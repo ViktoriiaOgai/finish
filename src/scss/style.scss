@@ -160,6 +160,10 @@ font-weight: 500;
   color: #000;
 }
 
+.text-block__link.open .button__icon {
+  transform: rotate(180deg) !important;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -614,7 +618,7 @@ transform: translateX(0);
   object-fit: contain;
   margin: 0 auto;
 }
-.barnds-as__text {
+.brands-as__text {
   font-family: 'TTlakes', sans-serif;
    color: #1a1919;
    font-size: 12px;
@@ -1101,7 +1105,8 @@ transform: translateX(0);
   position: relative;
   width: 100%;
   height: auto; /* высота под сетку */
-  margin: 20px auto;
+  margin: 0 auto;        /* центрирование */
+    padding: 0 20px;       /* отступы слева и справа */
   display: block;
    max-width: 1440px;
 }
@@ -1213,16 +1218,12 @@ transform: translateX(0);
   position: relative;
   width: 100%;
   height: auto; /* высота под сетку */
-  margin: 20px auto;
+   margin: 0 auto;        /* центрирование */
+    padding: 0 20px;       /* отступы слева и справа */
   display: block;
-   max-width: 1440px;
-    
+  max-width: 1440px;
+  padding: 0 20px;   
 }
-//.swiper-wrapper {
-   //display: contents !important;
-  //}
-/* Список карточек */
-//.swiper-slide { display: contents !important;}
 
 .brand-as-card {
     display: flex !important;
@@ -1233,13 +1234,15 @@ transform: translateX(0);
     height: 120px; /* фиксированная высота карточки */
     box-sizing: border-box;
   }
-  .brands-as__list{
-  padding-left: 20px;
+  .brands-as__list {
+  margin-top: 20px;
+  padding: 0 5px;
+  padding-right: 20px;
   width: 100%;
   height: 250px; /* достаточная высота для слайдов + пагинации */
   box-sizing: border-box;
   position: relative;
-  padding-bottom: 50px;
+  //padding-bottom: 50px;
   display: grid !important; /* используем grid вместо flex */
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: auto;
@@ -1253,38 +1256,13 @@ transform: translateX(0);
   width: auto;
   object-fit: contain;
 }
-
-/* Кнопка внутри карточки */
-.brand-as-card button {
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #ff004d;
-  border-radius: 50%;
-  background: none;
-  color: #ff004d;
-  cursor: pointer;
-  box-sizing: border-box;
-}
-
-.brand-as-card button:hover {
-  background: #ff3366;
-  color: #fff;
-}
-
-/* Скрытие лишних карточек */
 .brands-as__list .brand-as-card:nth-child(n+5) {
-  display: none !important;
-}
-
-/* Развернутая секция */
+    display: none !important; /*скрывает лишние элементы*/
+  }
 .brands-as__list.brands-as__list--expanded .brand-as-card {
   display: flex !important;
 }
-
-/* Кнопка показать/свернуть */
+/* Кнопка внутри карточки */
 .brands-as__toggle {
   display: inline-flex;
   align-items: center;
@@ -1296,25 +1274,23 @@ transform: translateX(0);
   border: none;
   margin-top: 16px;
   padding: 0;
+  white-space: nowrap;
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-.brands-as__toggle .button__icon {
+.button__icon {
   width: 30px;
   height: 30px;
   fill: #41f6d7;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, fill 0.3s ease;
 }
-
 .brands-as__toggle.open .button__icon {
   transform: rotate(180deg);
+    }
+  .brands-as__toggle:hover {
+  display: inline-flex;
 }
-
-
-
-
-
-
 .text-block__link1 {
   display: inline-flex;
   align-items: flex-start;
@@ -1333,6 +1309,24 @@ transform: translateX(0);
 .text-block__link1:hover {
   color: #000;
 }
+  .text-block__link2 {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #7e7e82;    
+  text-decoration: none;
+  background: none;
+  border: none;
+  margin-top: 16px;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.text-block__link2:hover {
+  color: #000;
+}
 .price-desc .swiper {
     padding-bottom: 5px;
      }
@@ -1340,18 +1334,24 @@ transform: translateX(0);
     display: none;
   }
 
+  .price-desc .swiper {
+    padding-bottom: 5px;
+     }
+  .swiper-pagination {
+    display: none;
+  }
     /* 3 колонки */
   .price-desc {
     display: flex;
     flex-direction: column;
     width: 95%;           /* таблица занимает всю ширину контейнера */
-  max-width: 1350px;     /* можно ограничить, если надо */
-  margin: 0 auto;        /* центрирование */
-  padding: 0 20px;       /* отступы слева и справа */
-  grid-template-columns: 2fr 1fr 1fr auto; /* пример колонок: услуга | цена | время | кнопка */
-  gap: 16px;             /* расстояние между колонками */
-  background-color: #fff;;
-  box-sizing: border-box; /* учитывает padding в ширине */
+    max-width: 1350px;     /* можно ограничить, если надо */
+    margin: 0 auto;        /* центрирование */
+    padding: 0 20px;       /* отступы слева и справа */
+    grid-template-columns: 2fr 1fr 1fr auto; /* пример колонок: услуга | цена | время | кнопка */
+    gap: 16px;             /* расстояние между колонками */
+    background-color: #fff;;
+    box-sizing: border-box; /* учитывает padding в ширине */
   }
 
   .price-desc__btn {
@@ -1390,7 +1390,7 @@ transform: translateX(0);
     width: 100%;
     box-sizing: border-box;
     padding: 16px 20px;
-    border-radius: 5px;       
+    border-radius: 15px;       
     background: #fff;
 
 }
