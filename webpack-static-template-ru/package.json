@@ -12,6 +12,7 @@
   "license": "ISC",
   "author": "Habsida",
   "main": "index.js",
+  "homepage": "https://ViktoriiaOgai.github.io/finish",
   "scripts": {
     "build": "webpack --mode production",
     "predeploy": "npm run build",
